@@ -6,14 +6,14 @@ import java.util.*;
 public class Kata {
 
 
-    public void follow(User user, User follower) {
-        String userName = user.getUserName();
-        Set<User> followers = KataRepo.userFollowerStore.get(user.getUserName());
-        if (followers == null) {
-            followers = new HashSet();
-            KataRepo.userFollowerStore.put(user.getUserName(), followers);
+    public void follow(User follower, User followee) {
+        String userName = follower.getUserName();
+        Set<User> followings = KataRepo.userFollowerStore.get(follower.getUserName());
+        if (followings == null) {
+            followings = new HashSet();
+            KataRepo.userFollowerStore.put(follower.getUserName(), followings);
         }
-        followers.add(follower);
+        followings.add(followee);
     }
 
     public void publish(User user, Message message) {
